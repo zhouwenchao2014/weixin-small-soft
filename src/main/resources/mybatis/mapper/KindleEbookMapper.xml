@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.myhomespace.zhou.mapper.KindleEbookMapper" >
+  <resultMap id="KindleEbookMap" type="cn.myhomespace.zhou.po.KindleEbook" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="bookName" property="bookName" jdbcType="VARCHAR" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="tag" property="tag" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <!--<select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.zhou.myhomespace.po.UserExample" >-->
+    <!--select-->
+    <!--<if test="distinct" >-->
+      <!--distinct-->
+    <!--</if>-->
+    <!--<include refid="Base_Column_List" />-->
+    <!--from kindleEbook-->
+    <!--<if test="_parameter != null" >-->
+      <!--<include refid="Example_Where_Clause" />-->
+    <!--</if>-->
+    <!--<if test="orderByClause != null" >-->
+      <!--order by ${orderByClause}-->
+    <!--</if>-->
+  <!--</select>-->
+  <select id="queryByParam" resultMap="KindleEbookMap" parameterType="String">
+    select * from kindleEbook
+    kindleEbook<where>
+      <if test="_parameter!=null" >
+        bookName = #{_parameter,jdbcType=VARCHAR}
+      </if>
+    </where>
+
+  </select>
+  <select id="queryAll" resultMap="KindleEbookMap">
+    select * from kindleEbook
+    <!--kindleEbook<where>-->
+    <!--<if test="bookName" >-->
+
+    <!--</if>-->
+    <!--</where>-->
+
+  </select>
+
+  <insert id="insert" parameterType="cn.myhomespace.zhou.po.KindleEbook" >
+    insert into kindleEbook (id, bookName, author,tag,url, type)
+    values (#{id,jdbcType=INTEGER}, #{bookName,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR},
+      #{tag,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR})
+  </insert>
+
+
+  <!--<update id="updateByExampleSelective" parameterType="map" >-->
+    <!--update kindleEbook-->
+    <!--<set >-->
+      <!--<if test="record.id != null" >-->
+        <!--id = #{record.id,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="record.username != null" >-->
+        <!--username = #{record.username,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.sex != null" >-->
+        <!--sex = #{record.sex,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.birthday != null" >-->
+        <!--birthday = #{record.birthday,jdbcType=DATE},-->
+      <!--</if>-->
+      <!--<if test="record.address != null" >-->
+        <!--address = #{record.address,jdbcType=VARCHAR},-->
+      <!--</if>-->
+    <!--</set>-->
+    <!--<if test="_parameter != null" >-->
+      <!--<include refid="Update_By_Example_Where_Clause" />-->
+    <!--</if>-->
+  <!--</update>-->
+
+</mapper>
