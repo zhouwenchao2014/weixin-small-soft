@@ -13,6 +13,24 @@ public class KindleEbook implements Serializable{
     private String tag;
     private String url;
     private String type;
+    private String summary;
+    private String picName;
+
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+    public String getPicName() {
+        return picName;
+    }
+
+    public void setPicName(String picName) {
+        this.picName = picName;
+    }
 
     public int getId() {
         return id;

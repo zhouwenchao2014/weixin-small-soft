@@ -8,6 +8,9 @@
     <result column="tag" property="tag" jdbcType="VARCHAR" />
     <result column="url" property="url" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="summary" property="summary" jdbcType="VARCHAR" />
+    <result column="picName" property="picName" jdbcType="VARCHAR" />
+
   </resultMap>
 
   <!--<select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.zhou.myhomespace.po.UserExample" >-->
@@ -24,13 +27,46 @@
       <!--order by ${orderByClause}-->
     <!--</if>-->
   <!--</select>-->
-  <select id="queryByParam" resultMap="KindleEbookMap" parameterType="String">
+  <select id="queryByParams" resultMap="KindleEbookMap" parameterType="java.util.Map">
     select * from kindleEbook
     kindleEbook<where>
-      <if test="_parameter!=null" >
-        bookName = #{_parameter,jdbcType=VARCHAR}
+      <if test="bookName!=null" >
+        bookName = #{bookName,jdbcType=VARCHAR}
       </if>
+    <if test="author!=null" >
+      author = #{author,jdbcType=VARCHAR}
+    </if>
+    <if test="tag!=null" >
+      tag = #{tag,jdbcType=VARCHAR}
+    </if>
+    <if test="url!=null" >
+      url = #{url,jdbcType=VARCHAR}
+    </if>
+    <if test="type!=null" >
+      type = #{type,jdbcType=VARCHAR}
+    </if>
+    <if test="summary!=null" >
+    summary = #{summary,jdbcType=VARCHAR}
+  </if>
+    <if test="summary!=null" >
+      picName = #{picName,jdbcType=VARCHAR}
+    </if>
     </where>
+    order BY  bookName
+    <if test="limit!=null" >
+      LIMIT #{pstart},#{psize}
+    </if>
+
+
+  </select>
+
+  <select id="queryByParam" resultMap="KindleEbookMap"  parameterType="String">
+    select * from kindleEbook
+    kindleEbook<where>
+    <if test="_parameter!=null" >
+      bookName = #{_parameter,jdbcType=VARCHAR}
+    </if>
+  </where>
 
   </select>
   <select id="queryAll" resultMap="KindleEbookMap">
@@ -44,9 +80,9 @@
   </select>
 
   <insert id="insert" parameterType="cn.myhomespace.zhou.po.KindleEbook" >
-    insert into kindleEbook (id, bookName, author,tag,url, type)
+    insert into kindleEbook (id, bookName, author,tag,url, type,summary,picName)
     values (#{id,jdbcType=INTEGER}, #{bookName,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR},
-      #{tag,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR})
+      #{tag,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, #{picName,jdbcType=VARCHAR})
   </insert>
 
 

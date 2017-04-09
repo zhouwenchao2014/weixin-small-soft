@@ -6,4 +6,7 @@ package cn.myhomespace.zhou.common;
 public class Content {
 
     public static final String MESSAGE_TYPE_SEND_KINDLE="SendKindle";
+    public static final String PAGE_FROM_HOME="home";
+    public static final String PAGE_FROM_DETAIL="detail";
+
 }
