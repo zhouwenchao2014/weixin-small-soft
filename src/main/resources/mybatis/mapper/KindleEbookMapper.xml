@@ -10,6 +10,11 @@
     <result column="type" property="type" jdbcType="VARCHAR" />
     <result column="summary" property="summary" jdbcType="VARCHAR" />
     <result column="picName" property="picName" jdbcType="VARCHAR" />
+    <result column="createTime" property="createTime" jdbcType="VARCHAR" />
+    <result column="readTimes" property="readTimes" jdbcType="VARCHAR" />
+    <result column="sendTimes" property="sendTimes" jdbcType="VARCHAR" />
+    <result column="isFree" property="isFree" jdbcType="VARCHAR" />
+    <result column="total" property="total" jdbcType="VARCHAR" />
 
   </resultMap>
 
@@ -52,13 +57,64 @@
       picName = #{picName,jdbcType=VARCHAR}
     </if>
     </where>
-    order BY  bookName
+    order BY bookName
     <if test="limit!=null" >
       LIMIT #{pstart},#{psize}
     </if>
-
-
   </select>
+
+  <select id="queryBookStatistics" resultMap="KindleEbookMap" parameterType="java.util.Map">
+    select * from kindleEbook
+    kindleEbook<where>
+    <if test="bookName!=null" >
+      bookName = #{bookName,jdbcType=VARCHAR}
+    </if>
+    <if test="author!=null" >
+      author = #{author,jdbcType=VARCHAR}
+    </if>
+    <if test="tag!=null" >
+      tag = #{tag,jdbcType=VARCHAR}
+    </if>
+    <if test="url!=null" >
+      url = #{url,jdbcType=VARCHAR}
+    </if>
+    <if test="type!=null" >
+      type = #{type,jdbcType=VARCHAR}
+    </if>
+    <if test="summary!=null" >
+      summary = #{summary,jdbcType=VARCHAR}
+    </if>
+    <if test="summary!=null" >
+      picName = #{picName,jdbcType=VARCHAR}
+    </if>
+  </where>
+    order BY
+    <if test="readTimes!=null" >
+      readTimes,
+    </if>
+    <if test="sendTimes!=null" >
+      sendTimes,
+    </if>
+    <if test="total!=null" >
+      total,
+    </if>
+    bookName
+    <if test="limit!=null" >
+      LIMIT #{pstart},#{psize}
+    </if>
+  </select>
+
+  <update id="updateById" parameterType="java.util.Map">
+    update kindleEbook set
+    <if test="readTimes!=null" >
+      readTimes=readTimes+1
+    </if>
+    <if test="sendTimes!=null" >
+      sendTimes=sendTimes+1
+    </if>
+    where id=#{id}
+  </update>
+
 
   <select id="queryByParam" resultMap="KindleEbookMap"  parameterType="String">
     select * from kindleEbook

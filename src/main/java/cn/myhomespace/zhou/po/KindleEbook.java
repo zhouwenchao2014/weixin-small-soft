@@ -15,6 +15,51 @@ public class KindleEbook implements Serializable{
     private String type;
     private String summary;
     private String picName;
+    private String createTime;
+    private String readTimes;
+    private String sendTimes;
+    private String isFree;
+    private String total;
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getReadTimes() {
+        return readTimes;
+    }
+
+    public void setReadTimes(String readTimes) {
+        this.readTimes = readTimes;
+    }
+
+    public String getSendTimes() {
+        return sendTimes;
+    }
+
+    public void setSendTimes(String sendTimes) {
+        this.sendTimes = sendTimes;
+    }
+
+    public String getIsFree() {
+        return isFree;
+    }
+
+    public void setIsFree(String isFree) {
+        this.isFree = isFree;
+    }
+
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
+    }
 
     public String getSummary() {
         return summary;
@@ -89,6 +134,13 @@ public class KindleEbook implements Serializable{
                 ", tag='" + tag + '\'' +
                 ", url='" + url + '\'' +
                 ", type='" + type + '\'' +
+                ", summary='" + summary + '\'' +
+                ", picName='" + picName + '\'' +
+                ", createTime='" + createTime + '\'' +
+                ", readTimes='" + readTimes + '\'' +
+                ", sendTimes='" + sendTimes + '\'' +
+                ", isFree='" + isFree + '\'' +
+                ", total='" + total + '\'' +
                 '}';
     }
 }
