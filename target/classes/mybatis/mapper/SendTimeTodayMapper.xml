@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.myhomespace.zhou.mapper.SendTimeTodayMapper" >
+  <resultMap id="KindleEbookMap" type="cn.myhomespace.zhou.po.KindleEbook" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="sendTime" property="sendTime" jdbcType="VARCHAR" />
+    <result column="sendDay" property="sendDay" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <!--<select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.zhou.myhomespace.po.UserExample" >-->
+    <!--select-->
+    <!--<if test="distinct" >-->
+      <!--distinct-->
+    <!--</if>-->
+    <!--<include refid="Base_Column_List" />-->
+    <!--from kindleEbook-->
+    <!--<if test="_parameter != null" >-->
+      <!--<include refid="Example_Where_Clause" />-->
+    <!--</if>-->
+    <!--<if test="orderByClause != null" >-->
+      <!--order by ${orderByClause}-->
+    <!--</if>-->
+  <!--</select>-->
+  <select id="queryByParam" resultMap="KindleEbookMap" parameterType="String">
+    select * from sendTimeToday<where>
+      <if test="_parameter!=null" >
+        bookName = #{_parameter,jdbcType=VARCHAR}
+      </if>
+    </where>
+
+  </select>
+  <select id="queryAll" resultMap="KindleEbookMap">
+    select * from sendTimeToday
+    <!--kindleEbook<where>-->
+    <!--<if test="bookName" >-->
+
+    <!--</if>-->
+    <!--</where>-->
+
+  </select>
+
+  <insert id="insert" parameterType="cn.myhomespace.zhou.po.SendTimeToday" >
+    insert into sendTimeToday (id, sendTime, sendDay)
+    values (#{id,jdbcType=INTEGER}, #{sendTime,jdbcType=VARCHAR}, #{sendDay,jdbcType=VARCHAR})
+  </insert>
+
+
+  <!--<update id="updateByExampleSelective" parameterType="map" >-->
+    <!--update kindleEbook-->
+    <!--<set >-->
+      <!--<if test="record.id != null" >-->
+        <!--id = #{record.id,jdbcType=INTEGER},-->
+      <!--</if>-->
+      <!--<if test="record.username != null" >-->
+        <!--username = #{record.username,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.sex != null" >-->
+        <!--sex = #{record.sex,jdbcType=VARCHAR},-->
+      <!--</if>-->
+      <!--<if test="record.birthday != null" >-->
+        <!--birthday = #{record.birthday,jdbcType=DATE},-->
+      <!--</if>-->
+      <!--<if test="record.address != null" >-->
+        <!--address = #{record.address,jdbcType=VARCHAR},-->
+      <!--</if>-->
+    <!--</set>-->
+    <!--<if test="_parameter != null" >-->
+      <!--<include refid="Update_By_Example_Where_Clause" />-->
+    <!--</if>-->
+  <!--</update>-->
+
+</mapper>

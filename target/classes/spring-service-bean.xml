@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:util="http://www.springframework.org/schema/util"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+  <context:component-scan base-package="cn.myhomespace.zhou">
+    <context:exclude-filter type="annotation"
+      expression="org.springframework.stereotype.Controller" />
+  </context:component-scan>
+
+  <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+    <property name="messageConverters">
+      <list>
+        <bean
+          class="org.springframework.http.converter.StringHttpMessageConverter">
+          <constructor-arg>
+            <value>UTF-8</value>
+          </constructor-arg>
+        </bean>
+        <bean
+          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+      </list>
+    </property>
+  </bean>
+  <!-- 引入数据库配置文件 -->
+  <context:property-placeholder location="classpath:wx.properties"/>
+
+  <!-- 配置C3P0 数据源 -->
+  <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+    <property name="user" value="${jdbc.username}"/>
+    <property name="password" value="${jdbc.password}"/>
+    <property name="driverClass" value="${jdbc.driver}"/>
+    <property name="jdbcUrl" value="${jdbc.url}"/>
+    <property name="initialPoolSize" value="${jdbc.initialPoolSize}"/>
+    <property name="maxPoolSize" value="${jdbc.maxPoolSize}"/>
+  </bean>
+
+  <!-- SendKindle配置 -->
+  <bean id="sendleKindle" class="cn.myhomespace.zhou.utils.SendKindle">
+    <property name="downloadPath" value="${download.path}"/>
+    <property name="mailHost" value="${mail.host}"/>
+    <property name="mailUserName" value="${mail.userName}"/>
+    <property name="mailPassword" value="${mail.password}"/>
+    <property name="mailFromMail" value="${mail.fromMail}"/>
+    <property name="message" value="${mail.message}"/>
+  </bean>
+
+  <!-- 配置 SqlSessionFactory -->
+  <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <!-- 加载mybatis的配置文件 -->
+    <property name="configLocation" value="classpath:mybatis/SqlMapConfig.xml"/>
+    <!-- 加载数据源 -->
+    <property name="dataSource" ref="dataSource"/>
+  </bean>
+
+  <!-- 通过MapperScannerConfigurer进行mapper扫描（建议使用）
+   mapper 批量扫描，从 mapper 包中扫描出 mapper 接口，自动创建代理对象，并在 spring 容器中注册名陈为类名首字母小写。
+   遵循的规范：将 mapper.java 和 mapper.xml 映射文件名陈一致，且在同一个目录
+   -->
+  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <!-- 指定扫描的包，如果存在多个包使用(逗号,)分割 -->
+    <property name="basePackage" value="cn.myhomespace.zhou.mapper" />
+    <!-- 注意此处是sqlSessionFactoryBeanName，如果写成 sqlSessionFactory，ref="sqlSessionFactory"
+         会造成 <context:property-placeholder location="classpath:config/db.properties"/> 失效 而连接不上数据库
+     -->
+    <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+  </bean>
+
+</beans>

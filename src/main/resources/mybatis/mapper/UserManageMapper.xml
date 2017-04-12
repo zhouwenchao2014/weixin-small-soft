@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.myhomespace.zhou.mapper.UserManageMapper" >
+  <resultMap id="UserManageMap" type="cn.myhomespace.zhou.po.UserManage" >
+    <result column="uuid" property="uuid" jdbcType="VARCHAR" />
+    <result column="openId" property="openId" jdbcType="VARCHAR" />
+    <result column="kindleEmail" property="kindleEmail" jdbcType="VARCHAR" />
+
+  </resultMap>
+  <select id="selectByOpenId" resultMap="UserManageMap" parameterType="String">
+    select * from userManage where openId=#{_parameter,jdbcType=VARCHAR}
+  </select>
+
+
+  <insert id="insert" parameterType="cn.myhomespace.zhou.po.UserManage" >
+    insert into userManage (uuid, openId, kindleEmail)
+    values (#{uuid,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, #{kindleEmail,jdbcType=VARCHAR})
+  </insert>
+
+  <update id="update" parameterType="cn.myhomespace.zhou.po.UserManage">
+    update userManage SET kindleEmail=#{kindleEmail} where openId=#{openId}
+  </update>
+
+</mapper>
