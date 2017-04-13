@@ -29,7 +29,9 @@ cn\myhomespace\zhou\po\WeixinUserKindle.class
 cn\myhomespace\zhou\po\SendTimeToday.class
 cn\myhomespace\zhou\controller\BookMessageController.class
 cn\myhomespace\zhou\handler\StoreCheckNotifyHandler.class
+cn\myhomespace\zhou\controller\UserController.class
 cn\myhomespace\zhou\handler\NullHandler.class
+cn\myhomespace\zhou\po\UserManage.class
 cn\myhomespace\zhou\utils\SendEmailWithFile$1.class
 cn\myhomespace\zhou\handler\UnsubscribeHandler.class
 cn\myhomespace\zhou\controller\BookCountController.class
@@ -44,6 +46,7 @@ cn\myhomespace\zhou\controller\BookStatisticsController.class
 cn\myhomespace\zhou\service\WeixinService.class
 cn\myhomespace\zhou\po\News.class
 cn\myhomespace\zhou\handler\KfSessionHandler.class
+cn\myhomespace\zhou\mapper\UserManageMapper.class
 cn\myhomespace\zhou\utils\DownLoadFile.class
 cn\myhomespace\zhou\utils\DownLoadFile$1.class
 cn\myhomespace\zhou\utils\SendEmailWithFile.class

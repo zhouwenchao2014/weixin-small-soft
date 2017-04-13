@@ -24,7 +24,9 @@ E:\WorkSpace\weixin-small-soft\src\main\java\cn\myhomespace\zhou\po\KindleEbook.
 E:\WorkSpace\weixin-small-soft\src\main\java\cn\myhomespace\zhou\po\TextResult.java
 E:\WorkSpace\weixin-small-soft\src\main\java\cn\myhomespace\zhou\utils\SendKindle.java
 E:\WorkSpace\weixin-small-soft\src\main\java\cn\myhomespace\zhou\handler\NullHandler.java
+E:\WorkSpace\weixin-small-soft\src\main\java\cn\myhomespace\zhou\mapper\UserManageMapper.java
 E:\WorkSpace\weixin-small-soft\src\main\java\cn\myhomespace\zhou\mapper\WeixinUserKindleMapper.java
+E:\WorkSpace\weixin-small-soft\src\main\java\cn\myhomespace\zhou\po\UserManage.java
 E:\WorkSpace\weixin-small-soft\src\main\java\cn\myhomespace\zhou\mapper\SendTimeTodayMapper.java
 E:\WorkSpace\weixin-small-soft\src\main\java\cn\myhomespace\zhou\handler\KfSessionHandler.java
 E:\WorkSpace\weixin-small-soft\src\main\java\cn\myhomespace\zhou\po\SearchMessage.java
@@ -33,6 +35,7 @@ E:\WorkSpace\weixin-small-soft\src\main\java\cn\myhomespace\zhou\controller\Book
 E:\WorkSpace\weixin-small-soft\src\main\java\cn\myhomespace\zhou\po\ResponseObject.java
 E:\WorkSpace\weixin-small-soft\src\main\java\cn\myhomespace\zhou\controller\WxMpPortalController.java
 E:\WorkSpace\weixin-small-soft\src\main\java\cn\myhomespace\zhou\builder\ImageBuilder.java
+E:\WorkSpace\weixin-small-soft\src\main\java\cn\myhomespace\zhou\controller\UserController.java
 E:\WorkSpace\weixin-small-soft\src\main\java\cn\myhomespace\zhou\mapper\KindleEbookMapper.java
 E:\WorkSpace\weixin-small-soft\src\main\java\cn\myhomespace\zhou\service\PublicService.java
 E:\WorkSpace\weixin-small-soft\src\main\java\cn\myhomespace\zhou\handler\SubscribeHandler.java
