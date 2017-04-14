@@ -11,5 +11,6 @@ public class Content {
     public static final String APP_ID="wx943ab8080bfc19cd";
     public static final String SECRET="bfd2755be9747e77ba4e792a496f75e6";
     public static final String GRANT_TYPE="authorization_code";
+    public static final String END_WITH="@kindle.cn";
 
 }

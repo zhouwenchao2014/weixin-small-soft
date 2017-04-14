@@ -23,5 +23,7 @@
         <!--的目录结构下的resources为classpath<mapper resource="config/mybatis/mapper/ItemsCustomMapper.xml" />-->
         <mapper resource="mybatis/mapper/KindleEbookMapper.xml" />
         <mapper resource="mybatis/mapper/UserManageMapper.xml" />
+        <mapper resource="mybatis/mapper/InviteCodeMapper.xml" />
+
     </mappers>
 </configuration>

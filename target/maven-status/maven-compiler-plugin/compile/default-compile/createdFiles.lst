@@ -25,6 +25,7 @@ cn\myhomespace\zhou\po\TalkMachine.class
 cn\myhomespace\zhou\mapper\SendTimeTodayMapper.class
 cn\myhomespace\zhou\handler\LogHandler.class
 cn\myhomespace\zhou\controller\BookTypeController.class
+cn\myhomespace\zhou\mapper\InviteCodeMapper.class
 cn\myhomespace\zhou\po\WeixinUserKindle.class
 cn\myhomespace\zhou\po\SendTimeToday.class
 cn\myhomespace\zhou\controller\BookMessageController.class
@@ -36,13 +37,16 @@ cn\myhomespace\zhou\utils\SendEmailWithFile$1.class
 cn\myhomespace\zhou\handler\UnsubscribeHandler.class
 cn\myhomespace\zhou\controller\BookCountController.class
 cn\myhomespace\zhou\handler\ScanHandler.class
+cn\myhomespace\zhou\common\ErrorMessage.class
 cn\myhomespace\zhou\mapper\WeixinUserKindleMapper.class
 cn\myhomespace\zhou\handler\SubscribeHandler.class
 cn\myhomespace\zhou\handler\MenuHandler.class
 cn\myhomespace\zhou\aop\ControllerLogAspect.class
 cn\myhomespace\zhou\common\Content.class
 cn\myhomespace\zhou\worker\SendKindleThread.class
+cn\myhomespace\zhou\controller\BandingKindleEmailController.class
 cn\myhomespace\zhou\controller\BookStatisticsController.class
+cn\myhomespace\zhou\po\InviteCode.class
 cn\myhomespace\zhou\service\WeixinService.class
 cn\myhomespace\zhou\po\News.class
 cn\myhomespace\zhou\handler\KfSessionHandler.class
@@ -55,3 +59,4 @@ cn\myhomespace\zhou\builder\TextBuilder.class
 cn\myhomespace\zhou\po\ResponseObject.class
 cn\myhomespace\zhou\po\Result.class
 cn\myhomespace\zhou\controller\KindleMessageController.class
+cn\myhomespace\zhou\controller\LoginController.class

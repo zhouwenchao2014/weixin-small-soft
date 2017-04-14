@@ -5,6 +5,9 @@
     <result column="uuid" property="uuid" jdbcType="VARCHAR" />
     <result column="openId" property="openId" jdbcType="VARCHAR" />
     <result column="kindleEmail" property="kindleEmail" jdbcType="VARCHAR" />
+    <result column="isVip" property="isVip" jdbcType="VARCHAR" />
+    <result column="isCode" property="isCode" jdbcType="VARCHAR" />
+    <result column="isCommon" property="isCommon" jdbcType="VARCHAR" />
 
   </resultMap>
   <select id="selectByOpenId" resultMap="UserManageMap" parameterType="String">
@@ -13,8 +16,8 @@
 
 
   <insert id="insert" parameterType="cn.myhomespace.zhou.po.UserManage" >
-    insert into userManage (uuid, openId, kindleEmail)
-    values (#{uuid,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, #{kindleEmail,jdbcType=VARCHAR})
+    insert into userManage (uuid, openId, kindleEmail,isVip,isCode,isCommon)
+    values (#{uuid,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, #{kindleEmail,jdbcType=VARCHAR}, #{isVip,jdbcType=VARCHAR}, #{isCode,jdbcType=VARCHAR}, #{isCommon,jdbcType=VARCHAR})
   </insert>
 
   <update id="update" parameterType="cn.myhomespace.zhou.po.UserManage">
