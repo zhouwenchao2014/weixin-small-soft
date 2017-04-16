@@ -7,7 +7,6 @@ public class UserManage {
 
     private String uuid;
     private String openId;
-    private String kindleEmail;
     private String isVip;
     private String isCode;
     private String isCommon;
@@ -17,7 +16,6 @@ public class UserManage {
         return "UserManage{" +
                 "uuid='" + uuid + '\'' +
                 ", openId='" + openId + '\'' +
-                ", kindleEmail='" + kindleEmail + '\'' +
                 ", isVip='" + isVip + '\'' +
                 ", isCode='" + isCode + '\'' +
                 ", isCommon='" + isCommon + '\'' +
@@ -62,13 +60,5 @@ public class UserManage {
 
     public void setOpenId(String openId) {
         this.openId = openId;
-    }
-
-    public String getKindleEmail() {
-        return kindleEmail;
-    }
-
-    public void setKindleEmail(String kindleEmail) {
-        this.kindleEmail = kindleEmail;
     }
 }

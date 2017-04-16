@@ -18,23 +18,9 @@
 
   </resultMap>
 
-  <!--<select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.zhou.myhomespace.po.UserExample" >-->
-    <!--select-->
-    <!--<if test="distinct" >-->
-      <!--distinct-->
-    <!--</if>-->
-    <!--<include refid="Base_Column_List" />-->
-    <!--from kindleEbook-->
-    <!--<if test="_parameter != null" >-->
-      <!--<include refid="Example_Where_Clause" />-->
-    <!--</if>-->
-    <!--<if test="orderByClause != null" >-->
-      <!--order by ${orderByClause}-->
-    <!--</if>-->
-  <!--</select>-->
   <select id="queryByParams" resultMap="KindleEbookMap" parameterType="java.util.Map">
     select * from kindleEbook
-    kindleEbook<where>
+    <where>
       <if test="bookName!=null" >
         bookName = #{bookName,jdbcType=VARCHAR}
       </if>
@@ -117,8 +103,7 @@
 
 
   <select id="queryByParam" resultMap="KindleEbookMap"  parameterType="String">
-    select * from kindleEbook
-    kindleEbook<where>
+    select * from kindleEbook<where>
     <if test="_parameter!=null" >
       bookName = #{_parameter,jdbcType=VARCHAR}
     </if>
@@ -127,11 +112,6 @@
   </select>
   <select id="queryAll" resultMap="KindleEbookMap">
     select * from kindleEbook
-    <!--kindleEbook<where>-->
-    <!--<if test="bookName" >-->
-
-    <!--</if>-->
-    <!--</where>-->
 
   </select>
 
@@ -140,30 +120,5 @@
     values (#{id,jdbcType=INTEGER}, #{bookName,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR},
       #{tag,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, #{picName,jdbcType=VARCHAR})
   </insert>
-
-
-  <!--<update id="updateByExampleSelective" parameterType="map" >-->
-    <!--update kindleEbook-->
-    <!--<set >-->
-      <!--<if test="record.id != null" >-->
-        <!--id = #{record.id,jdbcType=INTEGER},-->
-      <!--</if>-->
-      <!--<if test="record.username != null" >-->
-        <!--username = #{record.username,jdbcType=VARCHAR},-->
-      <!--</if>-->
-      <!--<if test="record.sex != null" >-->
-        <!--sex = #{record.sex,jdbcType=VARCHAR},-->
-      <!--</if>-->
-      <!--<if test="record.birthday != null" >-->
-        <!--birthday = #{record.birthday,jdbcType=DATE},-->
-      <!--</if>-->
-      <!--<if test="record.address != null" >-->
-        <!--address = #{record.address,jdbcType=VARCHAR},-->
-      <!--</if>-->
-    <!--</set>-->
-    <!--<if test="_parameter != null" >-->
-      <!--<include refid="Update_By_Example_Where_Clause" />-->
-    <!--</if>-->
-  <!--</update>-->
 
 </mapper>

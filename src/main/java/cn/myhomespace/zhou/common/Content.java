@@ -12,5 +12,6 @@ public class Content {
     public static final String SECRET="bfd2755be9747e77ba4e792a496f75e6";
     public static final String GRANT_TYPE="authorization_code";
     public static final String END_WITH="@kindle.cn";
+    public static final int KINDLE_BANDING_SIZE=2;
 
 }

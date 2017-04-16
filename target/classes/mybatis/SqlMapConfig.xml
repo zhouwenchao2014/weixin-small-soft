@@ -24,6 +24,8 @@
         <mapper resource="mybatis/mapper/KindleEbookMapper.xml" />
         <mapper resource="mybatis/mapper/UserManageMapper.xml" />
         <mapper resource="mybatis/mapper/InviteCodeMapper.xml" />
+        <mapper resource="mybatis/mapper/KindleEmailMapper.xml" />
+        <mapper resource="mybatis/mapper/KindleBookManage.xml" />
 
     </mappers>
 </configuration>

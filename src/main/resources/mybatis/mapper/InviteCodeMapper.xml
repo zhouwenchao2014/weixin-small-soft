@@ -9,7 +9,7 @@
   </resultMap>
 
   <insert id="insert" parameterType="cn.myhomespace.zhou.po.InviteCode">
-    insert into userManage (uuid, code)
+    insert into inviteCode (uuid, code)
     values (#{uuid,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR})
   </insert>
 
