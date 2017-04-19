@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +25,7 @@ import java.util.UUID;
 @RequestMapping("/weixin/bookCount")
 public class BookCountController {
 
-    private Logger logger = LoggerFactory.getLogger(KindleMessageController.class);
+    private Logger logger = LoggerFactory.getLogger(BookCountController.class);
 
     @Autowired
     private KindleEbookMapper kindleEbookMapper;
@@ -57,6 +58,7 @@ public class BookCountController {
             kindleBookManage.setBookId(kindleEbooks.get(0).getId()+"");
             kindleBookManage.setBookName(kindleEbooks.get(0).getBookName());
             kindleBookManage.setType(KindleBookManageType.READ.getCode());
+            kindleBookManage.setCreateTime(new Date(System.currentTimeMillis()));
             kindleBookManageMapper.insert(kindleBookManage);
             return JSON.toJSONString("增加一次浏览");
         }else if(sendTimes!=null&&updateNum>0){
@@ -92,6 +94,7 @@ public class BookCountController {
             kindleBookManage.setBookId(kindleEbooks.get(0).getId()+"");
             kindleBookManage.setBookName(kindleEbooks.get(0).getBookName());
             kindleBookManage.setType(KindleBookManageType.READ.getCode());
+            kindleBookManage.setCreateTime(new Date(System.currentTimeMillis()));
             kindleBookManageMapper.insert(kindleBookManage);
             return JSON.toJSONString("增加一次浏览");
         }else if(sendTimes!=null&&updateNum>0){

@@ -15,6 +15,7 @@
     <result column="sendTimes" property="sendTimes" jdbcType="VARCHAR" />
     <result column="isFree" property="isFree" jdbcType="VARCHAR" />
     <result column="total" property="total" jdbcType="VARCHAR" />
+    <result column="create" property="create" jdbcType="VARCHAR" />
 
   </resultMap>
 
@@ -70,7 +71,7 @@
     <if test="summary!=null" >
       summary = #{summary,jdbcType=VARCHAR}
     </if>
-    <if test="summary!=null" >
+    <if test="picName!=null" >
       picName = #{picName,jdbcType=VARCHAR}
     </if>
   </where>
@@ -89,6 +90,26 @@
       LIMIT #{pstart},#{psize}
     </if>
   </select>
+
+  <select id="queryNew" parameterType="java.util.Map" resultMap="KindleEbookMap">
+  select * from kindleEbook
+  <if test="type!=null">
+    <where>
+      type=#{type,jdbcType=VARCHAR}
+    </where>
+  </if>
+  order by createTime desc
+  <if test="limit!=null" >
+    LIMIT #{pstart},#{psize}
+  </if>
+</select>
+
+  <select id="queryNewByType" parameterType="java.util.Map" resultMap="KindleEbookMap">
+    SELECT * FROM kindleEbook a WHERE #{psize} &gt;(SELECT COUNT(1) FROM kindleEbook WHERE type=a.type and id &lt; a.id) ORDER BY a.type,a.id desc
+  </select>
+
+
+
 
   <update id="updateById" parameterType="java.util.Map">
     update kindleEbook set

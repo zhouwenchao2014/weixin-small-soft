@@ -17,4 +17,7 @@ public interface KindleEbookMapper {
     List<KindleEbook> queryByParams(Map<String,Object> params);
     List<KindleEbook> queryBookStatistics(Map<String,Object> params);
     int updateById(Map<String,Object> params);
+    List<KindleEbook> queryNew(Map<String,Object> params);
+    List<KindleEbook> queryNewByType(Map<String,Object> params);
+
 }

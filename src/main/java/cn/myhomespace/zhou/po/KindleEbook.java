@@ -1,6 +1,7 @@
 package cn.myhomespace.zhou.po;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 /**
  * Created by zhouwenchao on 2016/12/9.
@@ -20,6 +21,15 @@ public class KindleEbook implements Serializable{
     private String sendTimes;
     private String isFree;
     private String total;
+    private Date create;
+
+    public Date getCreate() {
+        return create;
+    }
+
+    public void setCreate(Date create) {
+        this.create = create;
+    }
 
     public String getCreateTime() {
         return createTime;

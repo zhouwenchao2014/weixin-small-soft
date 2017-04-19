@@ -38,7 +38,7 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 @RequestMapping("/weixin/login")
 public class LoginController {
 
-    private Logger logger = LoggerFactory.getLogger(KindleMessageController.class);
+    private Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     @Autowired
     private KindleEbookMapper kindleEbookMapper;

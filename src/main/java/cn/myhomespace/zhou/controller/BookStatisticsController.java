@@ -20,7 +20,7 @@ import java.util.Map;
 @RequestMapping("/weixin/bookStatistics")
 public class BookStatisticsController {
 
-    private Logger logger = LoggerFactory.getLogger(KindleMessageController.class);
+    private Logger logger = LoggerFactory.getLogger(BookStatisticsController.class);
 
     @Autowired
     private KindleEbookMapper kindleEbookMapper;

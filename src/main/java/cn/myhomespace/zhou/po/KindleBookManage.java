@@ -1,5 +1,7 @@
 package cn.myhomespace.zhou.po;
 
+import java.sql.Date;
+
 /**
  * Created by zhouwenchao on 2017/4/16.
  */
@@ -10,6 +12,7 @@ public class KindleBookManage {
     private String bookId;
     private String bookName;
     private int type;
+    private Date createTime;
 
     @Override
     public String toString() {
@@ -19,7 +22,16 @@ public class KindleBookManage {
                 ", bookId='" + bookId + '\'' +
                 ", bookName='" + bookName + '\'' +
                 ", type=" + type +
+                ", createTime=" + createTime +
                 '}';
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public String getUuid() {

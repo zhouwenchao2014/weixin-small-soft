@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,7 +29,7 @@ import java.util.regex.Pattern;
 @RequestMapping("/weixin/kindleSend")
 public class KindleSendController {
 
-    private Logger logger = LoggerFactory.getLogger(KindleMessageController.class);
+    private Logger logger = LoggerFactory.getLogger(KindleSendController.class);
 
     @Autowired
     private KindleEbookMapper kindleEbookMapper;
@@ -55,10 +56,16 @@ public class KindleSendController {
 
         if(kindleEmails!=null&&kindleEmails.size()>0){
             List<KindleEbook> kindleEbooks= kindleEbookMapper.queryByParam(bookName);
+            String kindleName=kindleEmails.get(0).getKindleEmail();
+            bookName = kindleEbooks.get(0).getBookName();
+            if(!bookName.contains(".mobi")){
+                bookName=bookName+".mobi";
+            }
             boolean isSend=false;
-            boolean isdown= DownLoadFile.downLoadFileWithPath(kindleEbooks.get(0).getUrl(),kindleEbooks.get(0).getBookName(),sendKindle.getDownloadPath());
+            //boolean isdown= DownLoadFile.downLoadFileWithPath(kindleEbooks.get(0).getUrl(),bookName,sendKindle.getDownloadPath());
+            boolean isdown=true;
             if (isdown) {
-                isSend = sendKindle.sendKindle(kindleEmails.get(0).getKindleEmail(), bookName);
+                isSend = sendKindle.sendKindle(kindleName, bookName);
             }else{
                 result.put("sendStatus","false");
                 result.put("code", ErrorMessage.DOWNLOAD_FAIL.getCode());
@@ -72,6 +79,7 @@ public class KindleSendController {
                 kindleBookManage.setBookId(kindleEbooks.get(0).getId()+"");
                 kindleBookManage.setBookName(kindleEbooks.get(0).getBookName());
                 kindleBookManage.setType(KindleBookManageType.SEND.getCode());
+                kindleBookManage.setCreateTime(new Date(System.currentTimeMillis()));
                 kindleBookManageMapper.insert(kindleBookManage);
                 result.put("sendStatus","true");
                 result.put("code", ErrorMessage.SEND_SUCCESS.getCode());
@@ -105,10 +113,15 @@ public class KindleSendController {
 
         if(kindleEmails!=null&&kindleEmails.size()>0){
             List<KindleEbook> kindleEbooks= kindleEbookMapper.queryByParam(bookName);
+            String kindleName=kindleEmails.get(0).getKindleEmail();
+            bookName = kindleEbooks.get(0).getBookName();
+            if(!bookName.contains(".mobi")){
+                bookName=bookName+".mobi";
+            }
             boolean isSend=false;
-            boolean isdown= DownLoadFile.downLoadFileWithPath(kindleEbooks.get(0).getUrl(),kindleEbooks.get(0).getBookName(),sendKindle.getDownloadPath());
+            boolean isdown= DownLoadFile.downLoadFileWithPath(kindleEbooks.get(0).getUrl(),bookName,sendKindle.getDownloadPath());
             if (isdown) {
-                isSend = sendKindle.sendKindle(kindleEmails.get(0).getKindleEmail(), bookName);
+                isSend = sendKindle.sendKindle(kindleName, bookName);
             }else{
                 result.put("sendStatus","false");
                 result.put("code", ErrorMessage.DOWNLOAD_FAIL.getCode());
@@ -122,6 +135,7 @@ public class KindleSendController {
                 kindleBookManage.setBookId(kindleEbooks.get(0).getId()+"");
                 kindleBookManage.setBookName(kindleEbooks.get(0).getBookName());
                 kindleBookManage.setType(KindleBookManageType.SEND.getCode());
+                kindleBookManage.setCreateTime(new Date(System.currentTimeMillis()));
                 kindleBookManageMapper.insert(kindleBookManage);
                 result.put("sendStatus","true");
                 result.put("code", ErrorMessage.SEND_SUCCESS.getCode());

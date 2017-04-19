@@ -34,12 +34,12 @@ public class SendKindle {
         // Mail("dujiang@sricnet.com","du_jiang@sohu.com","smtp.sohu.com","du_jiang","31415926","你好","胃，你好吗？");
         sendmail.attachfile(this.downloadPath+mobiBookName);
         boolean isSeand=sendmail.sendMail();
-        if(isSeand){
-            File file=new File(this.downloadPath+mobiBookName);
-            if(file.exists()){
-                file.delete();
-            }
-        }
+//        if(isSeand){
+//            File file=new File(this.downloadPath+mobiBookName);
+//            if(file.exists()){
+//                file.delete();
+//            }
+//        }
         return isSeand;
     }
 

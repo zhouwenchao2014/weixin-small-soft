@@ -7,11 +7,12 @@
     <result column="bookName" property="bookName" jdbcType="VARCHAR" />
     <result column="bookId" property="bookId" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="createTime" property="createTime" jdbcType="VARCHAR" />
   </resultMap>
 
   <insert id="insert" parameterType="cn.myhomespace.zhou.po.KindleBookManage">
-    insert into kindleBookManage (uuid, openId,bookName,bookId,type)
-    values (#{uuid,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR},#{bookName,jdbcType=VARCHAR}, #{bookId,jdbcType=VARCHAR},#{type,jdbcType=VARCHAR})
+    insert into kindleBookManage (uuid, openId,bookName,bookId,type，createTime)
+    values (#{uuid,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR},#{bookName,jdbcType=VARCHAR}, #{bookId,jdbcType=VARCHAR},#{type,jdbcType=VARCHAR},#{createTime,jdbcType=VARCHAR})
   </insert>
 
   <select id="queryByParams" resultMap="KindleBookManageMap" parameterType="Map">

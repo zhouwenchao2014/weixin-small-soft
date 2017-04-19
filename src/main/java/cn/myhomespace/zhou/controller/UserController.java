@@ -33,7 +33,7 @@ import java.util.Map;
 @RequestMapping("/weixin/user")
 public class UserController {
 
-    private Logger logger = LoggerFactory.getLogger(KindleMessageController.class);
+    private Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     private KindleEbookMapper kindleEbookMapper;

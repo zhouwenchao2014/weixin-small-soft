@@ -184,7 +184,7 @@ public class SendEmailWithFile {
 
             // 向Multipart添加正文
             MimeBodyPart mbpContent = new MimeBodyPart();
-            mbpContent.setContent(content, "text/html;charset=gb2312");
+            mbpContent.setContent(content, "text/html;charset=GBK");
 
             // 向MimeMessage添加（Multipart代表正文）
             mp.addBodyPart(mbpContent);
@@ -198,9 +198,9 @@ public class SendEmailWithFile {
                 FileDataSource fds = new FileDataSource(filename);
                 mbpFile.setDataHandler(new DataHandler(fds));
                 //这个方法可以解决附件乱码问题。</span>
-                String filename= new String(fds.getName().getBytes(),"ISO-8859-1");
-
-                mbpFile.setFileName(filename);
+//                String filename= new String(fds.getName().getBytes(),"utf-8");
+                String fileName =  MimeUtility.encodeText(fds.getName());
+                mbpFile.setFileName(fileName);
                 // 向MimeMessage添加（Multipart代表附件）
                 mp.addBodyPart(mbpFile);
 

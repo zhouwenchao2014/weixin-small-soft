@@ -65,7 +65,7 @@ public class UrlUtils {
             urlConnection.setRequestProperty("Cookie","AV_TOKEN=\"2|1:0|10:1480423205|8:AV_TOKEN|16:MTc4NTE2Nzo1MTI4|40f64f1c568578de4eab35bbba576284f09dd971c53575ba7bd60e1f8cdbbee3\"");
             urlConnection.connect();
             inputStream=urlConnection.getInputStream();
-            inputStreamReader=new InputStreamReader(inputStream,"GBK");
+            inputStreamReader=new InputStreamReader(inputStream);
             bufferedReader=new BufferedReader(inputStreamReader);
         } catch (MalformedURLException e) {
             e.printStackTrace();

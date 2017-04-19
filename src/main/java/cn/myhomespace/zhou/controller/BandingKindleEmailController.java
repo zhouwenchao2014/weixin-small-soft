@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
 @RequestMapping("/weixin/bandingKindleEmail")
 public class BandingKindleEmailController {
 
-    private Logger logger = LoggerFactory.getLogger(KindleMessageController.class);
+    private Logger logger = LoggerFactory.getLogger(BandingKindleEmailController.class);
 
     @Autowired
     private InviteCodeMapper inviteCodeMapper;
