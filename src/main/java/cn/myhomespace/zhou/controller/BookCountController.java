@@ -12,11 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * Created by zhouw on 2017/4/11.
@@ -53,7 +49,7 @@ public class BookCountController {
         List<KindleEbook> kindleEbooks = kindleEbookMapper.queryByParams(params);
         if(readTimes!=null&&updateNum>0){
             KindleBookManage kindleBookManage = new KindleBookManage();
-            kindleBookManage.setUuid(UUID.randomUUID().toString().replaceAll("-",""));
+            kindleBookManage.setUuid(UUID.randomUUID().toString().replaceAll("-","").substring(0,32));
             kindleBookManage.setOpenId(openId);
             kindleBookManage.setBookId(kindleEbooks.get(0).getId()+"");
             kindleBookManage.setBookName(kindleEbooks.get(0).getBookName());
@@ -89,7 +85,7 @@ public class BookCountController {
         List<KindleEbook> kindleEbooks = kindleEbookMapper.queryByParams(params);
         if(readTimes!=null&&updateNum>0){
             KindleBookManage kindleBookManage = new KindleBookManage();
-            kindleBookManage.setUuid(UUID.randomUUID().toString().replaceAll("-",""));
+            kindleBookManage.setUuid(UUID.randomUUID().toString().replaceAll("-","").substring(0,32));
             kindleBookManage.setOpenId(openId);
             kindleBookManage.setBookId(kindleEbooks.get(0).getId()+"");
             kindleBookManage.setBookName(kindleEbooks.get(0).getBookName());

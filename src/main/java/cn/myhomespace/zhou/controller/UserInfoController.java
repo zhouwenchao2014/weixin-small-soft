@@ -40,6 +40,9 @@ public class UserInfoController{
 
         //查询该用户流量过的书
         params.put("type", KindleBookManageType.READ.getCode());
+        params.put("limit",0);
+        params.put("pstart",0);
+        params.put("psize",5);
         List<KindleBookManage> kindleBookManages = kindleBookManageMapper.queryByParams(params);
         result.put("read",kindleBookManages);
         //查询该用户订阅过的书
@@ -63,6 +66,9 @@ public class UserInfoController{
 
         //查询该用户流量过的书
         params.put("type", KindleBookManageType.READ.getCode());
+        params.put("limit",0);
+        params.put("pstart",0);
+        params.put("psize",5);
         List<KindleBookManage> kindleBookManages = kindleBookManageMapper.queryByParams(params);
         result.put("read",kindleEmails);
         //查询该用户订阅过的书

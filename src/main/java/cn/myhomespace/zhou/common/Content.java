@@ -13,5 +13,7 @@ public class Content {
     public static final String GRANT_TYPE="authorization_code";
     public static final String END_WITH="@kindle.cn";
     public static final int KINDLE_BANDING_SIZE=2;
+    public static final String READTIMES = "readTimes";
+    public static final String SENDTIMES = "sendTimes";
 
 }

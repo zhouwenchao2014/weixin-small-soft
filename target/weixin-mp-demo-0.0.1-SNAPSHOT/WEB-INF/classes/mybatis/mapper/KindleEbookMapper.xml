@@ -52,7 +52,7 @@
 
   <select id="queryBookStatistics" resultMap="KindleEbookMap" parameterType="java.util.Map">
     select * from kindleEbook
-    kindleEbook<where>
+    <where>
     <if test="bookName!=null" >
       bookName = #{bookName,jdbcType=VARCHAR}
     </if>
@@ -77,10 +77,10 @@
   </where>
     order BY
     <if test="readTimes!=null" >
-      readTimes,
+      readTimes desc,
     </if>
     <if test="sendTimes!=null" >
-      sendTimes,
+      sendTimes desc,
     </if>
     <if test="total!=null" >
       total,
@@ -103,6 +103,8 @@
     LIMIT #{pstart},#{psize}
   </if>
 </select>
+
+
 
   <select id="queryNewByType" parameterType="java.util.Map" resultMap="KindleEbookMap">
     SELECT * FROM kindleEbook a WHERE #{psize} &gt;(SELECT COUNT(1) FROM kindleEbook WHERE type=a.type and id &lt; a.id) ORDER BY a.type,a.id desc

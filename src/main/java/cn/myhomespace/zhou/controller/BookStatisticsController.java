@@ -1,5 +1,6 @@
 package cn.myhomespace.zhou.controller;
 
+import cn.myhomespace.zhou.common.Content;
 import cn.myhomespace.zhou.mapper.KindleEbookMapper;
 import cn.myhomespace.zhou.po.KindleEbook;
 import com.alibaba.fastjson.JSON;
@@ -28,11 +29,18 @@ public class BookStatisticsController {
     @ResponseBody
     @GetMapping(produces = "text/plain;charset=utf-8")
     public String get(HttpServletRequest request) {
-        String fieldName = request.getParameter("fieldName");
-        String fieldValue = request.getParameter("fieldValue");
-        String size = request.getParameter("size");
+
+        String type = request.getParameter("type");
+        String rank = request.getParameter("rank");
+        int size = Integer.parseInt(request.getParameter("size"));
         Map<String,Object> params = new HashMap<>();
-        params.put(fieldName,fieldValue);
+        params.put("type",type);
+        if(rank.contains(Content.READTIMES)){
+            params.put(Content.READTIMES,1);
+        }else{
+            params.put(Content.SENDTIMES,1);
+        }
+        params.put("limit",0);
         params.put("pstart",0);
         params.put("psize",size);
         List<KindleEbook> kindleEbooks= kindleEbookMapper.queryBookStatistics(params);
@@ -42,11 +50,17 @@ public class BookStatisticsController {
     @ResponseBody
     @PostMapping(produces = "application/xml; charset=UTF-8")
     public String post(HttpServletRequest request) {
-        String fieldName = request.getParameter("fieldName");
-        String fieldValue = request.getParameter("fieldValue");
-        String size = request.getParameter("size");
+        String type = request.getParameter("type");
+        String rank = request.getParameter("rank");
+        int size = Integer.parseInt(request.getParameter("size"));
         Map<String,Object> params = new HashMap<>();
-        params.put(fieldName,fieldValue);
+        params.put("type",type);
+        if(rank.contains(Content.READTIMES)){
+            params.put(Content.READTIMES,1);
+        }else{
+            params.put(Content.SENDTIMES,1);
+        }
+        params.put("limit",0);
         params.put("pstart",0);
         params.put("psize",size);
         List<KindleEbook> kindleEbooks= kindleEbookMapper.queryBookStatistics(params);

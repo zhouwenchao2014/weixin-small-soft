@@ -11,7 +11,7 @@
   </resultMap>
 
   <insert id="insert" parameterType="cn.myhomespace.zhou.po.KindleBookManage">
-    insert into kindleBookManage (uuid, openId,bookName,bookId,type，createTime)
+    insert into kindleBookManage (uuid, openId,bookName,bookId,type,createTime)
     values (#{uuid,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR},#{bookName,jdbcType=VARCHAR}, #{bookId,jdbcType=VARCHAR},#{type,jdbcType=VARCHAR},#{createTime,jdbcType=VARCHAR})
   </insert>
 
@@ -31,6 +31,9 @@
         bookName=#{bookName,jdbcType=VARCHAR}
       </if>
     </where>
+    <if test="limit!=null" >
+      LIMIT #{pstart},#{psize}
+    </if>
   </select>
 
 

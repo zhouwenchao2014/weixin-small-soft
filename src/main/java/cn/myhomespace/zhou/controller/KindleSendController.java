@@ -81,6 +81,10 @@ public class KindleSendController {
                 kindleBookManage.setType(KindleBookManageType.SEND.getCode());
                 kindleBookManage.setCreateTime(new Date(System.currentTimeMillis()));
                 kindleBookManageMapper.insert(kindleBookManage);
+                Map<String,Object> params1 = new HashMap<>();
+                params1.put("sendTimes","1");
+                params1.put("id",kindleEbooks.get(0).getId());
+                kindleEbookMapper.updateById(params1);
                 result.put("sendStatus","true");
                 result.put("code", ErrorMessage.SEND_SUCCESS.getCode());
                 result.put("message", ErrorMessage.SEND_SUCCESS.getMessage());
@@ -119,7 +123,8 @@ public class KindleSendController {
                 bookName=bookName+".mobi";
             }
             boolean isSend=false;
-            boolean isdown= DownLoadFile.downLoadFileWithPath(kindleEbooks.get(0).getUrl(),bookName,sendKindle.getDownloadPath());
+            //boolean isdown= DownLoadFile.downLoadFileWithPath(kindleEbooks.get(0).getUrl(),bookName,sendKindle.getDownloadPath());
+            boolean isdown=true;
             if (isdown) {
                 isSend = sendKindle.sendKindle(kindleName, bookName);
             }else{
@@ -137,6 +142,10 @@ public class KindleSendController {
                 kindleBookManage.setType(KindleBookManageType.SEND.getCode());
                 kindleBookManage.setCreateTime(new Date(System.currentTimeMillis()));
                 kindleBookManageMapper.insert(kindleBookManage);
+                Map<String,Object> params1 = new HashMap<>();
+                params1.put("sendTimes","1");
+                params1.put("id",kindleEbooks.get(0).getId());
+                kindleEbookMapper.updateById(params1);
                 result.put("sendStatus","true");
                 result.put("code", ErrorMessage.SEND_SUCCESS.getCode());
                 result.put("message", ErrorMessage.SEND_SUCCESS.getMessage());

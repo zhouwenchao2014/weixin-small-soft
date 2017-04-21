@@ -1,6 +1,6 @@
 package cn.myhomespace.zhou.po;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * Created by zhouwenchao on 2017/4/16.
